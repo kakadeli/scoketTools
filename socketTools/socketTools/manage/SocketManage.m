@@ -30,6 +30,8 @@
 
 
 
+
+
 @end
 
 @implementation SocketManage
@@ -40,16 +42,18 @@
     manamge.host = host;
     manamge.port = port;
     manamge.type = type;
-    [manamge creatBSDSocket];
     return manamge;
 }
 
-//重写状态的set方法
-- (void)setStop:(BOOL)stop{
-    _stop = stop;
-    
+//关闭连接
+- (void)closeConnet{
     //关闭连接
     close(self.socketFileDescriptor);
+}
+//开始连接
+- (void)startConnet{
+    
+    [self creatBSDSocket];
 }
 
 
@@ -125,6 +129,7 @@
     
     self.socketpames = &(socketParameters);
     //创建连接
+//    int list = list(self.socketFileDescriptor);
     int ret = connect(self.socketFileDescriptor, (struct sockaddr *) self.socketpames, sizeof(socketParameters));
     if (-1 == ret) {
         close(self.socketFileDescriptor);
@@ -132,14 +137,21 @@
         NSLog(@"连接失败");
         return;
     }
+    [self loaddata];
+
+}
+
+- (void)loaddata{
     
     NSMutableData * data = [[NSMutableData alloc] init];
     //接收数据
     const char * buffer[1024];
     int length = sizeof(buffer);
     //该函数的第一个参数指定接收端套接字描述符； 第二个参数指明一个缓冲区，该缓冲区用来存放recv函数接收到的数据； 第三个参数指明buf的长度； 第四个参数一般置0
+    //    NSInteger result = recv(self.socketFileDescriptor, &buffer, length, 0);
+    
     NSInteger result = recv(self.socketFileDescriptor, &buffer, length, 0);
-    if (result > 0) {
+    if (result >= 0) {
         [data appendBytes:buffer length:result];
         self.finished(data,@"成功");
         
@@ -148,8 +160,9 @@
         return;
     }
     
-    
+    [self loaddata];
 }
+
 
 //cfnet
 - (void)cfneturl:(NSURL *)url{
@@ -202,8 +215,8 @@
     CFRunLoopRun();
 }
 
-void socketCallback(CFReadStreamRef stream, CFStreamEventType event, void * myPtr)
-{
+//block回调
+void socketCallback(CFReadStreamRef stream, CFStreamEventType event, void * myPtr){
     NSLog(@" >> socketCallback in Thread %@", [NSThread currentThread]);
     
     
@@ -257,17 +270,33 @@ void socketCallback(CFReadStreamRef stream, CFStreamEventType event, void * myPt
 
 - (void)sendMessage:(NSString *)message{
     
-    const char *data = [message UTF8String];
-    struct iovec iov;
-    struct msghdr msg;
-    iov.iov_base = &data;
-    iov.iov_len = sizeof(data);
-    msg.msg_name = self.socketpames;
+    switch (self.type) {
+        case BSDs:
+            [self bsdSendMeg:message];
+            break;
+        case CFNet:
+            [self cfnetsendmeg:message];
+            break;
+            
+        default:
+            break;
+    }
     
+
+}
+
+//发送消息
+- (void)bsdSendMeg:(NSString *)message{
+    char *data = (char *)[message UTF8String];
+    struct iovec iov[1];
+    struct msghdr msg;
+    iov[0].iov_base = data;
+    iov[0].iov_len = strlen(data);
+    msg.msg_name = NULL;
     msg.msg_namelen = sizeof(self.socketpames);
-    msg.msg_iov = &iov;
+    msg.msg_iov = &iov[0];
     msg.msg_iovlen = 1;
-//    msg.msg_iov->iov_len = 13;
+    //    msg.msg_iov->iov_len = 13;
     msg.msg_control = 0;
     msg.msg_controllen = 0;
     msg.msg_flags = 0;
@@ -289,11 +318,17 @@ void socketCallback(CFReadStreamRef stream, CFStreamEventType event, void * myPt
      ENOTSOCK：sock索引的不是套接字
      EPIPE：本地连接已关闭
      */
-    sendmsg(self.socketFileDescriptor, &msg, 0);
-    if (sendmsg(self.socketFileDescriptor, &msg, 0)) {
-        NSLog(@"%zd",sendmsg(self.socketFileDescriptor, &msg, 0));
-    }
+   
+    NSLog(@"%zd",sendmsg(self.socketFileDescriptor, &msg, 0));
 
+}
+
+- (void)cfnetsendmeg:(NSString *)message{
+    
+        NSString *stringTosend = @"你好";
+        char *data = [stringTosend UTF8String];
+//        send();
+    
 }
 
 @end
