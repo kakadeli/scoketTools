@@ -8,7 +8,6 @@
     [maname startConnet] ;
     //数据回调
     maname.finished = ^(NSData *data,NSString *str){
-//        NSNumber *num = [NSNumber]
         NSLog(@"%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
         NSLog(@"%@",str);
         
