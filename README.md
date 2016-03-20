@@ -13,7 +13,6 @@
         
     };
    
-}
 //发送数据以及关闭连接
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.manage sendMessage:@"12121297979797979799797\n"];
