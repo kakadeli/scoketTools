@@ -44,6 +44,9 @@
     label.textStorage.attArray = Attributes;
     label.textStorage.dic = Attribute;
     label.textStorage.regular = regular;
+    label.text = string;
+    label.textColor = [UIColor clearColor];
+    label.numberOfLines = 0;
     return label;
 }
 
@@ -141,24 +144,24 @@
 }
 
 #pragma mark 代理方法
-- (BOOL)layoutManager:(NSLayoutManager *)layoutManager shouldBreakLineByWordBeforeCharacterAtIndex:(NSUInteger)charIndex{
-    NSRange range;
-    NSURL *linkURL = [layoutManager.textStorage attribute:NSLinkAttributeName atIndex:charIndex effectiveRange:&range];
-    
-    // Do not break lines in links unless absolutely required
-    if (linkURL && charIndex > range.location && charIndex <= NSMaxRange(range))
-        return NO;
-    else
-        return YES;
-}
-
-- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
-    return floorf(glyphIndex/100);
-}
-
-- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager paragraphSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
-    return 10;
-}
+//- (BOOL)layoutManager:(NSLayoutManager *)layoutManager shouldBreakLineByWordBeforeCharacterAtIndex:(NSUInteger)charIndex{
+//    NSRange range;
+//    NSURL *linkURL = [layoutManager.textStorage attribute:NSLinkAttributeName atIndex:charIndex effectiveRange:&range];
+//    
+//    // Do not break lines in links unless absolutely required
+//    if (linkURL && charIndex > range.location && charIndex <= NSMaxRange(range))
+//        return NO;
+//    else
+//        return YES;
+//}
+//
+//- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
+//    return floorf(glyphIndex/100);
+//}
+//
+//- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager paragraphSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
+//    return 10;
+//}
 
 #pragma mark 懒加载
 - (NSMutableArray *)tempArray{
