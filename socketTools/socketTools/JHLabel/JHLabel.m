@@ -144,6 +144,8 @@
 }
 
 #pragma mark 代理方法
+
+
 //- (BOOL)layoutManager:(NSLayoutManager *)layoutManager shouldBreakLineByWordBeforeCharacterAtIndex:(NSUInteger)charIndex{
 //    NSRange range;
 //    NSURL *linkURL = [layoutManager.textStorage attribute:NSLinkAttributeName atIndex:charIndex effectiveRange:&range];
