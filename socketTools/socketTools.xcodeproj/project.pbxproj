@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA00DD481CB0E2B500C6B98C /* JHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DD431CB0E2B500C6B98C /* JHLabel.m */; };
+		FA00DD491CB0E2B500C6B98C /* JHLayoutManage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DD451CB0E2B500C6B98C /* JHLayoutManage.m */; };
+		FA00DD4A1CB0E2B500C6B98C /* JHTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA00DD471CB0E2B500C6B98C /* JHTextStorage.m */; };
 		FA7173BD1C9DC485009ABED0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7173BC1C9DC485009ABED0 /* main.m */; };
 		FA7173C01C9DC485009ABED0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7173BF1C9DC485009ABED0 /* AppDelegate.m */; };
 		FA7173C31C9DC485009ABED0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7173C21C9DC485009ABED0 /* ViewController.m */; };
@@ -36,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA00DD421CB0E2B500C6B98C /* JHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLabel.h; sourceTree = "<group>"; };
+		FA00DD431CB0E2B500C6B98C /* JHLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLabel.m; sourceTree = "<group>"; };
+		FA00DD441CB0E2B500C6B98C /* JHLayoutManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLayoutManage.h; sourceTree = "<group>"; };
+		FA00DD451CB0E2B500C6B98C /* JHLayoutManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLayoutManage.m; sourceTree = "<group>"; };
+		FA00DD461CB0E2B500C6B98C /* JHTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTextStorage.h; sourceTree = "<group>"; };
+		FA00DD471CB0E2B500C6B98C /* JHTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTextStorage.m; sourceTree = "<group>"; };
 		FA7173B81C9DC485009ABED0 /* socketTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socketTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7173BC1C9DC485009ABED0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA7173BE1C9DC485009ABED0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA00DD411CB0E2B500C6B98C /* JHLabel */ = {
+			isa = PBXGroup;
+			children = (
+				FA00DD421CB0E2B500C6B98C /* JHLabel.h */,
+				FA00DD431CB0E2B500C6B98C /* JHLabel.m */,
+				FA00DD441CB0E2B500C6B98C /* JHLayoutManage.h */,
+				FA00DD451CB0E2B500C6B98C /* JHLayoutManage.m */,
+				FA00DD461CB0E2B500C6B98C /* JHTextStorage.h */,
+				FA00DD471CB0E2B500C6B98C /* JHTextStorage.m */,
+			);
+			path = JHLabel;
+			sourceTree = "<group>";
+		};
 		FA7173AF1C9DC484009ABED0 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +131,7 @@
 				FA7173C11C9DC485009ABED0 /* ViewController.h */,
 				FA7173C21C9DC485009ABED0 /* ViewController.m */,
 				FA7173C41C9DC485009ABED0 /* Main.storyboard */,
+				FA00DD411CB0E2B500C6B98C /* JHLabel */,
 				FA7173EE1C9DC4D2009ABED0 /* manage */,
 				FA7173C71C9DC485009ABED0 /* Assets.xcassets */,
 				FA7173C91C9DC485009ABED0 /* LaunchScreen.storyboard */,
@@ -284,8 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7173C31C9DC485009ABED0 /* ViewController.m in Sources */,
+				FA00DD481CB0E2B500C6B98C /* JHLabel.m in Sources */,
 				FA7173C01C9DC485009ABED0 /* AppDelegate.m in Sources */,
 				FA7173BD1C9DC485009ABED0 /* main.m in Sources */,
+				FA00DD491CB0E2B500C6B98C /* JHLayoutManage.m in Sources */,
+				FA00DD4A1CB0E2B500C6B98C /* JHTextStorage.m in Sources */,
 				FA7173F11C9DC502009ABED0 /* SocketManage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +536,7 @@
 				FA7173E71C9DC485009ABED0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA7173E81C9DC485009ABED0 /* Build configuration list for PBXNativeTarget "socketToolsTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +545,7 @@
 				FA7173EA1C9DC485009ABED0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA7173EB1C9DC485009ABED0 /* Build configuration list for PBXNativeTarget "socketToolsUITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +554,7 @@
 				FA7173ED1C9DC485009ABED0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
